@@ -1,9 +1,11 @@
+# IDE
+.idea
+
+# Kitchen
 .vagrant
-/cookbooks
+.kitchen
+.kitchen.local.yml
 
 # Bundler
-bin/*
-.bundle/*
-
-.kitchen/
-.kitchen.local.yml
+Gemfile.lock
+Berksfile.lock
