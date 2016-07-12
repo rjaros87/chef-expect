@@ -27,21 +27,18 @@ Expect requires Tcl (tool command language). This cookbook will provide Tcl pack
 
 ### expect::default
 
-| Key                                               | Type    | Description                                                                                 | Platform | Default                                                 |
-| ------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------- |
-| `default['expect']['include_homebrew']`           | Boolean | Include homebrew recipe for installing brew on Mac OS                                       | Mac OS   | `true`                                                  |
-| `default['expect']['active_tcl']['from_system']`  | Boolean | Use the ActiveTcl from system                                                               | Windows  | `false`                                                 |
-| `default['expect']['active_tcl']['version']`      | String  | Version of the ActiveTcl which should be installed                                          | Windows  | `'8.6.4.1'`                                             |
-| `default['expect']['active_tcl']['directory']`    | String  | Installation path for the ActiveTcl                                                         | Windows  | `'C:\\Tcl'`                                             |
-| `default['expect']['active_tcl']['discover_url']` | String  | Server where the cookbook should search for installation binaries (based on SHA256SUM file) | Windows  | `'http://downloads.activestate.com/ActiveTcl/releases'` |
-| `default['expect']['active_tcl']['url']`          | String  | Direct url for the installation file                                                        | Windows  | `nil`                                                   |
-| `default['expect']['active_tcl']['checksum']`     | String  | Checksum (SHA256) of the installation file from direct url                                  | Windows  | `nil`                                                   |
+| Key                                             | Type    | Description                                             | Platform | Default                            |
+| ------------------------------------------------| ------- | --------------------------------------------------------| -------- | -----------------------------------|
+| `default['expect']['include_homebrew']`         | Boolean | Include homebrew recipe for installing brew on Mac OS   | Mac OS   | `true`                             |
+| `default['expect']['cygwin']['from_system']`    | Boolean | Use the Cygwin from system                              | Windows  | `false`                            |
+| `default['expect']['cygwin']['home']`           | String  | Installation path for the Cygwin                        | Windows  | `'C:\\Tcl'`                        |
+| `default['expect']['cygwin']['site']`           | String  | Server where the Cygwin should search for the packages  | Windows  | `'http://cygwin.mirrors.pair.com'` |
 
 ## Recipes
 
 ### expect::default
 
-Installs Expect package on node and if the node platform is Windows then the recipe also installs [ActiveState ActiveTcl](http://www.activestate.com/activetcl) component.
+Installs Expect package on node and if the node platform is Windows then the recipe also installs [Cygwin](https://www.cygwin.com/) component.
 
 ## Usage
 

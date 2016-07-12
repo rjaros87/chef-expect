@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 # Windows
-describe package('ActiveState ActiveTcl 8.6.4.1'), if: os[:family] == 'windows' do
-  it { should be_installed }
+describe file('C:\\cygwin'), if: os[:family] == 'windows' do
+  it { should be_directory }
 end
 
-describe command('cd C:\Tcl\bin; teacup.exe list --at-default Expect'), if: os[:family] == 'windows' do
-  its(:stdout) { should contain('package Expect') }
+describe file('C:\\cygwin\\bin\\expect.exe'), if: os[:family] == 'windows' do
+  it { should exist }
 end
 
 # Linux & Mac OS

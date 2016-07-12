@@ -25,31 +25,16 @@ when 'mac_os_x'
   homebrew_tap 'homebrew/dupes'
   homebrew_package 'expect'
 when 'windows'
-  if node['expect']['active_tcl']['from_system']
-    Chef::Log.info('Skipping the ActiveTcl installation because the attribute [\'expect\'][\'active_tcl\'][\'from_system\'] is set to true')
+  if node['expect']['cygwin']['from_system']
+    Chef::Log.info('Skipping the Cygwin installation because the attribute [\'expect\'][\'cygwin\'][\'from_system\'] is set to true')
   else
-    Chef::Recipe.send(:include, ::Windows::Helper)
+    node.default['cygwin']['home'] = node['expect']['cygwin']['home']
+    node.default['cygwin']['site'] = node['expect']['cygwin']['site']
 
-    tcl_name = "ActiveState ActiveTcl #{node['expect']['active_tcl']['version']}"
+    include_recipe 'cygwin::default'
 
-    if is_package_installed?(tcl_name)
-      Chef::Log.info("Package already installed: #{tcl_name}")
-    else
-      Chef::Recipe.send(:include, Expect::Helper)
-
-      active_tcl_url, active_tcl_checksum = active_state_tcl_installer
-
-      windows_package "#{tcl_name} Installer" do
-        installer_type :custom
-        options "--directory \"#{node['expect']['active_tcl']['directory']}\""
-        checksum active_tcl_checksum
-        source active_tcl_url
-        action :install
-      end
-    end
-    execute 'Install package Expect using teacup' do
-      command 'teacup.exe install Expect'
-      cwd "#{node['expect']['active_tcl']['directory']}/bin"
+    cygwin_package 'expect' do
+      action :install
     end
   end
 else
