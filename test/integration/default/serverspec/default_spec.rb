@@ -13,3 +13,11 @@ end
 describe package('expect'), if: os[:family] != 'windows' do
   it { should be_installed }
 end
+
+describe file("#{ENV['HOME']}/no.txt") do
+  it { should exist }
+end
+
+describe file("#{ENV['HOME']}/yes.txt") do
+  it { should_not exist }
+end

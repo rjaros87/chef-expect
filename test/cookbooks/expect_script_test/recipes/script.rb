@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: expect
-# Attributes:: default
+# Cookbook Name:: expect_script_test (for test purposes)
+# Recipe:: script
 #
 # Copyright 2016, Radoslaw Jaros
 #
@@ -17,9 +17,8 @@
 # limitations under the License.
 #
 
-# Mac OS
-default['expect']['include_homebrew'] = true
-# Windows
-default['expect']['cygwin']['from_system'] = false
-default['expect']['cygwin']['home'] = 'C:\\cygwin'
-default['expect']['cygwin']['site'] = 'http://cygwin.mirrors.pair.com'
+if node['platform_family'] == 'windows'
+  include_recipe 'expect_script_test::script_win'
+else
+  include_recipe 'expect_script_test::script_unix'
+end

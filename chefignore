@@ -22,3 +22,6 @@ Gemfile.lock
 # Berkshelf
 Berksfile
 Berksfile.lock
+
+# Chef
+chefignore

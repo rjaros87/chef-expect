@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: expect
-# Attributes:: default
+# Resource:: script
 #
 # Copyright 2016, Radoslaw Jaros
 #
@@ -17,9 +17,25 @@
 # limitations under the License.
 #
 
-# Mac OS
-default['expect']['include_homebrew'] = true
-# Windows
-default['expect']['cygwin']['from_system'] = false
-default['expect']['cygwin']['home'] = 'C:\\cygwin'
-default['expect']['cygwin']['site'] = 'http://cygwin.mirrors.pair.com'
+property :code, kind_of: String, required: true
+property :environment, kind_of: Hash
+property :user, kind_of: [String, Integer]
+property :group, kind_of: [String, Integer]
+
+default_action :run
+
+action :run do
+  if node['platform_family'] == 'windows'
+    new_resource.environment.each do |key, val|
+      ENV[key] = val
+    end
+  end
+
+  script 'Execute Expect script' do
+    interpreter 'expect'
+    environment new_resource.environment
+    user new_resource.user
+    group new_resource.group
+    code new_resource.code
+  end
+end
