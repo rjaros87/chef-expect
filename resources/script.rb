@@ -17,6 +17,7 @@
 # limitations under the License.
 #
 
+property :cwd, kind_of: String
 property :code, kind_of: String, required: true
 property :environment, kind_of: Hash
 property :user, kind_of: [String, Integer]
@@ -33,6 +34,7 @@ action :run do
 
   script 'Execute Expect script' do
     interpreter 'expect'
+    cwd new_resource.cwd
     environment new_resource.environment
     user new_resource.user
     group new_resource.group

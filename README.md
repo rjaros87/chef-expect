@@ -59,6 +59,7 @@ This cookbook provides a script provider called `expect_script` which will execu
 
 | Property      | Type              | Description                                                                  | Default                            | Required |
 | --------------| ----------------- | ---------------------------------------------------------------------------- | -----------------------------------| -------- |
+| `cwd`         | String            | The current working directory                                                | `true`                             | false    |
 | `code`        | String            | A quoted string of code to be executed                                       | `false`                            | true     |
 | `environment` | Hash              | A Hash of environment variables in the form of ({"ENV_VARIABLE" => "VALUE"}) | `'C:\\cygwin'`                     | false    |
 | `user`        | [String, Integer] | The user name or user ID that should be changed before running a command     | `nil`                              | false    |
@@ -109,4 +110,3 @@ end
 ## License and Authors
 
 Authors: Radoslaw Jaros
-
