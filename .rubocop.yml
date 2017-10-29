@@ -1,2 +1,4 @@
 Metrics/LineLength:
   Max: 150
+Layout/EndOfLine:
+  EnforcedStyle: lf
