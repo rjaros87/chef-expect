@@ -17,11 +17,11 @@
 # limitations under the License.
 #
 
-property :cwd, kind_of: String
-property :code, kind_of: String, required: true
-property :environment, kind_of: Hash
-property :user, kind_of: [String, Integer]
-property :group, kind_of: [String, Integer]
+property :cwd, String
+property :code, String, required: true
+property :environment, Hash
+property :user, [String, Integer]
+property :group, [String, Integer]
 
 default_action :run
 
