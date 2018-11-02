@@ -22,7 +22,7 @@ when 'debian', 'rhel'
   package 'expect'
 when 'mac_os_x'
   include_recipe 'homebrew' if node['expect']['include_homebrew']
-  homebrew_tap 'homebrew/dupes'
+  homebrew_tap 'homebrew/core'
   homebrew_package 'expect'
 when 'windows'
   if node['expect']['cygwin']['from_system']
