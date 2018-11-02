@@ -2,6 +2,9 @@
 
 This file is used to list changes made in each version of the Expect cookbook.
 
+## 2.1.1
+- Update Gemfile and fix style of custom resource properties
+
 ## 2.1.0
 - Updating Homebrew tap since it's deprecation (https://github.com/Homebrew/homebrew-dupes/blob/master/README.md)
 
